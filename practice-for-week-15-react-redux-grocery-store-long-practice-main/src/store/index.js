@@ -1,5 +1,6 @@
 import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from "redux";
 import produceReducer from "./produce";
+import cartReducer from "./cart";
 
 let enhancer;
 
@@ -10,7 +11,8 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const rootReducer = combineReducers({
-  produce: produceReducer
+  produce: produceReducer,
+  cart: cartReducer,
 });
 
 const configureStore = (preloadedState) => {
