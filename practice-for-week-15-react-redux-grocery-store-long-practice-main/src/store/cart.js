@@ -8,7 +8,16 @@ export const addItemToCart = (id) => {
   }
 }
 
+export const removeItemFromCart = (id) => {
+  return {
+    type: REMOVE_ITEM,
+    payload: id,
+  }
+}
+
 export default function cartReducer(state = {}, action) {
+
+
   switch(action.type) {
     case ADD_ITEM:
       const id = action.payload;
@@ -32,6 +41,10 @@ export default function cartReducer(state = {}, action) {
         },
       }
       return newObject;
+    case REMOVE_ITEM:
+      const newState = Object.assign({}, state);
+      delete newState[action.payload];
+      return newState;
     default:
       return state;
   }
