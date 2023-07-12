@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeItemFromCart } from '../../store/cart';
+import { removeItemFromCart, incrementItemCount, decrementItemCount } from '../../store/cart';
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -21,11 +21,13 @@ function CartItem({ item }) {
         />
         <button
           className="cart-item-button"
+          onClick={() => dispatch(incrementItemCount(item.id))}
         >
           +
         </button>
         <button
           className="cart-item-button"
+          onClick={() => dispatch(decrementItemCount(item.id))}
         >
           -
         </button>
